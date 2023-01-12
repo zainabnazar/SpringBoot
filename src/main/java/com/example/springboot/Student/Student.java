@@ -1,6 +1,22 @@
 package com.example.springboot.Student;
+
+import jakarta.persistence.*;
+import org.apache.logging.log4j.message.AsynchronouslyFormattable;
+
 // define class which contains id and name
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(
+            name="student-sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private Long id;
     private String name;
 
